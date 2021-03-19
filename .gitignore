@@ -23,6 +23,7 @@ ipch
 *.vcxproj
 *.vcxproj.filters
 *.sln
+*.vs/
 
 # OSX/Linux build products
 *.mak
