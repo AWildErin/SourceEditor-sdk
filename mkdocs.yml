@@ -13,7 +13,6 @@ theme:
   language: en
   palette: 
     scheme: slate
-    primary: black
   font:
     text: Roboto
     code: Roboto Mono
