@@ -1,0 +1,10 @@
+//-----------------------------------------------------------------------------
+//	PROJECTS.VGC
+//
+//	Group Configurations for all SourceEditor projects
+//-----------------------------------------------------------------------------
+
+$Project "sourceeditor_launcher"
+{
+	"sourceeditor\launcher\sourceeditor_launcher.vpc" [$WIN32]
+}

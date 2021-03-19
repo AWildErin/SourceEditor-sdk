@@ -1,0 +1,10 @@
+//-----------------------------------------------------------------------------
+//	GROUPS.VGC
+//
+//	Group Configurations for all SourceEditor projects
+//-----------------------------------------------------------------------------
+
+$Group "sourceeditor"
+{
+    "sourceeditor_launcher"
+}
