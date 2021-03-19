@@ -1,5 +1,8 @@
 # Files to ignore when considering what GIT should commit.
 
+# Docs
+docs/site/
+
 # Visual Studio 
 *.suo
 *.user

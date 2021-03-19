@@ -1,0 +1,33 @@
+site_name: SourceEditor Documentation
+site_dir: 'docs/site'
+
+repo_name: AWildErin/SourceEditor
+repo_url: https://github.com/AWildErin/SourceEditor
+
+# Configuration
+
+theme:
+  name: material
+  feature:
+    tabs: true
+  language: en
+  palette: 
+    scheme: slate
+    primary: black
+  font:
+    text: Roboto
+    code: Roboto Mono
+
+# Plugins
+plugins:
+  - search
+  - git-revision-date-localized:
+      type: date
+
+# Extensions
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: true
