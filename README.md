@@ -1,6 +1,6 @@
 # SourceEditor
 
-SourceEditor is my attempt at making an editor suite, similar to Unreal or Unity, but for Source 1. Currently our tools are built using Source SDK as it allows us to use Source and it's various libraries.
+SourceEditor is my attempt at making an editor suite, similar to Unreal or Unity, but for Source 1. Currently our tools are built using Source SDK as it allows us to use Source and it's various libraries. **Please keep in mind I don't fully know what I am doing, I work with C# mostly but in order to do this I have to work with C++ unless I want to spend time making C# stuff for the engine**
 
 See our docs for information on how to build it, make your own tools and more.
 
