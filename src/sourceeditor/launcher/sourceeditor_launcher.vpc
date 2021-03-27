@@ -1,0 +1,58 @@
+//-----------------------------------------------------------------------------
+//	SDKLAUNCHER.VPC
+//
+//	Project Script
+//-----------------------------------------------------------------------------
+
+$Macro SRCDIR		"..\.."
+$Macro OUTBINDIR	"$SRCDIR\..\game\sourceeditor"
+$Macro OUTBINNAME	"sourceeditor"
+
+$Include "$SRCDIR\vpc_scripts\source_exe_qt_win32_base.vpc"
+
+$Configuration
+{
+	$Compiler
+	{
+		$AdditionalIncludeDirectories		"$BASE,$SRCDIR\utils\common;"
+		$PreprocessorDefinitions			"$BASE;VERSION_SAFE_STEAM_API_INTERFACES"
+	}
+
+	$Linker
+	{
+		$AdditionalDependencies				"$BASE odbc32.lib odbccp32.lib WS2_32.LIB"
+	}
+}
+
+$Project "SourceEditor (Launcher)"
+{
+    $Folder "Source Files"
+    {
+        $Folder "Windows"
+        {
+			//$File "windows/SourceEditorDialog.h"
+			//$File "windows/SourceEditorDialog.cpp"
+        }
+
+        $File "main.cpp"
+    }
+
+    $Folder "Header Files"
+    {
+
+    }
+
+	$Folder	"Resource Files"
+	{
+		$File	"icon2.ico"
+		$File	"Script1.rc"
+		$File	"steam.ico"
+	}
+
+	$Folder	"Link Libraries"
+	{
+		$Lib bitmap
+		$Lib appframework
+		$Lib mathlib
+		$Lib tier2
+	}
