@@ -1,0 +1,21 @@
+"tooldata"
+{
+    "toolzoo"
+    {
+        // Your tool name
+        "m_Name"    "toolzoo"
+
+        // Name used on the UI
+        "m_FriendlyName"    "Tool Zoo"
+
+        // Icon used for windows and tool selection screen
+        // must be relative to your resources path
+        "m_ToolIcon"        ""
+        
+        // List of tools that are required to load this
+        "dependencies"
+        {
+
+        }
+    }
+}
