@@ -2,7 +2,7 @@
 //
 //==================================================================================================
 
-$Macro	QT_ROOT	"$SRCDIR\thirdparty\lgpl\qt"
+$Macro QT_ROOT "$SRCDIR\thirdparty\qt-release"
 
 $Include "$SRCDIR\vpc_scripts\source_exe_win_win32_base.vpc"
 $Include "$SRCDIR\vpc_scripts\qt_base.vpc"
@@ -33,16 +33,16 @@ $Project
 {
 	$Folder "Link Libraries" [$QTDEBUG]
 	{
-		$Lib								"$QT_ROOT\lib\qtmaind"
-		$Lib								"$QT_ROOT\lib\qtcored4"
-		$Lib								"$QT_ROOT\lib\qtguid4"
+		//$Lib								"$QT_ROOT\lib\qtmaind"
+		$Lib								"$QT_ROOT\lib\qt5cored"
+		$Lib								"$QT_ROOT\lib\qt5guid"
 	}
 	
 	$Folder "Link Libraries" [!$QTDEBUG]
 	{
-		$Lib								"$QT_ROOT\lib\qtmain"
-		$Lib								"$QT_ROOT\lib\qtcore4"
-		$Lib								"$QT_ROOT\lib\qtgui4"
+		//$Lib								"$QT_ROOT\lib\qtmain"
+		$Lib								"$QT_ROOT\lib\qt5core"
+		$Lib								"$QT_ROOT\lib\qt5gui"
 	}
 }
 
