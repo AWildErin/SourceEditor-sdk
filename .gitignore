@@ -4,8 +4,7 @@
 docs/site/
 
 # Third party
-src/thirdparty/qt-release
-src/thirdparty/qt-debug
+src/thirdparty/qt
 
 # Visual Studio 
 *.suo
