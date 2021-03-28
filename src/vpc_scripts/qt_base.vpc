@@ -5,7 +5,7 @@
 //
 //-----------------------------------------------------------------------------
 
-$Macro QT_ROOT						"$SRCDIR\thirdparty\qt-release"
+$Macro QT_ROOT						"$SRCDIR\thirdparty\qt"
 $Macro QT_MOC_TOOL					"$QT_ROOT\bin\moc.exe"
 $Macro QT_UI_TOOL					"$QT_ROOT\bin\uic.exe"
 $Macro QT_QRC_TOOL					"$QT_ROOT\bin\rcc.exe"
