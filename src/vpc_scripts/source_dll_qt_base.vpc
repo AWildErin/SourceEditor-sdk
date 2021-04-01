@@ -32,13 +32,13 @@ $Project
 {
 	$Folder "Link Libraries" [$QTDEBUG]
 	{
-		$Lib								"$QT_ROOT\lib\qt5cored"
-		$Lib								"$QT_ROOT\lib\qt5guid"
+		$Lib								"$QT_ROOT\lib\qtcored4"
+		$Lib								"$QT_ROOT\lib\qtguid4"
 	}
 	
 	$Folder "Link Libraries" [!$QTDEBUG]
 	{
-		$Lib								"$QT_ROOT\lib\qt5core"
-		$Lib								"$QT_ROOT\lib\qt5gui"
+		$Lib								"$QT_ROOT\lib\qtcore4"
+		$Lib								"$QT_ROOT\lib\qtgui4"
 	}
 }
