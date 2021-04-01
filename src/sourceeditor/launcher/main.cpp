@@ -1,102 +1,89 @@
-#include "appframework/tier3app.h"
+#include "appframework/AppFramework.h"
 #include "tier0/icommandline.h"
-#include "inputsystem/iinputsystem.h"
 
-#include <io.h>
-#include <stdio.h>
+// Qt includes
+#include <QtGui/qapplication.h>
+#include <QtCore/qdebug.h>
+#include "windows/dialog.h"
 
-#include <winsock2.h>
-#include "steam/steam_api.h"
+/*
+Todo: fix stylesheet not loading from file.
+Todo: fix Qt not working well with Source files, to do with runtime library
+*/
 
-// memdbgon must be the last include file in a .cpp file!!!
-#include <tier0/memdbgon.h>
-
-CSteamAPIContext g_SteamAPIContext;
-CSteamAPIContext* steamapicontext = &g_SteamAPIContext;
-
-bool g_bAppQuit = false;
-
-void ShutdownMessageWindow(void)
+class CSourceEditorApp : public CSteamAppSystemGroup
 {
-
-}
-
-int InitializeVGui()
-{
-
-}
-
-void CheckConfigParameters()
-{
-	// Shader API parameter, allows the user to change what shader API we use
-	const char* pShaderDLL(CommandLine()->ParmValue("-shaderdll"));
-	const char* pArg;
-
-	if (CommandLine()->CheckParm("-shaderapi", &pArg))
-	{
-		pShaderDLL = pArg;
-	}
-
-	if (!pShaderDLL)
-	{
-		pShaderDLL = "shaderapidx9.dll";
-	}
-
-	// Call SetShaderAPI when we can
-}
-
-//-----------------------------------------------------------------------------
-// The application object
-//-----------------------------------------------------------------------------
-class CSourceEditorApp : public CVguiSteamApp
-{
-	typedef CVguiSteamApp BaseClass;
-
 public:
-	// Methods from IApplication
+	// Methods of IApplication
 	virtual bool Create();
 	virtual bool PreInit();
 	virtual int Main();
 	virtual void PostShutdown();
-	virtual void Destroy() {}
+	virtual void Destroy();
 };
 
-DEFINE_WINDOWED_STEAM_APPLICATION_OBJECT(CSourceEditorApp);
-
-/*
-	TODO: Add things like material system here too to be able to access Source's renderer.
-	TODO: Add command to allow us to define a shader api
-*/
 bool CSourceEditorApp::Create()
 {
-	//SpewOutputFunc();
+	qDebug() << "Running Create()";
 
-	// List of DLLs we require
-	AppSystemInfo_t appSystems[] =
+	if (!CommandLine()->CheckParm("-nop4"))
 	{
-		{ "inputsystem.dll",		INPUTSYSTEM_INTERFACE_VERSION },
-		{ "", "" }	// Required to terminate the list
-	};
+		qDebug() << "Launching with p4 source control";
+	}
 
-	// Add the DLLs above
-	return AddSystems(appSystems);
+	return true;
 }
 
 bool CSourceEditorApp::PreInit()
 {
-	return false;
+	qDebug() << "Running PreInit()";
+
+	return true;
 }
 
 int CSourceEditorApp::Main()
 {
-	SteamAPI_InitSafe();
-	SteamAPI_SetTryCatchCallbacks(false); // We don't use exceptions, so tell steam not to use try/catch in callback handlers
-	g_SteamAPIContext.Init();
+
+	Dialog w;
+	w.show();
+	
+	qApp->exec();
 
 	return 1;
 }
 
 void CSourceEditorApp::PostShutdown()
 {
-	BaseClass::PostShutdown();
+
+}
+
+void CSourceEditorApp::Destroy()
+{
+}
+
+
+int main(int argc, char* argv[])
+{
+	CommandLine()->CreateCmdLine(argc, argv);
+	QApplication app(argc, argv);
+
+	CSourceEditorApp editorApp;
+	CSteamApplication steamApplication(&editorApp);
+	int nRetValue = steamApplication.Run();
+
+	return nRetValue;
+
+	/*
+	QApplication app(argc, argv);
+
+	QFile styleSheetFile("resources/stylesheets/sourceeditor.qss");
+	styleSheetFile.open(QFile::ReadOnly);
+	QString style(styleSheetFile.readAll());
+	app.setStyleSheet(style);
+
+	Dialog w;
+	w.show();
+
+	return app.exec();
+	*/
 }
