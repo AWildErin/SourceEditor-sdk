@@ -3,8 +3,9 @@
 # Docs
 docs/site/
 
-# Third party
-src/thirdparty/qt
+# Qt Ignores
+src/thirdparty/qt*
+**/generated_code_DO_NOT_CHECK_THESE_IN/
 
 # Visual Studio 
 *.suo

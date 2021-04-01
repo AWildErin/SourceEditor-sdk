@@ -1,3 +1,9 @@
 # Ignore the build
 sourceeditor.exe
 sourceeditor.pdb
+
+# Ignore bin for now
+bin/
+
+# Content
+resources/
