@@ -9,6 +9,6 @@ I got inspritation from the Source 2 tools and thought to myself "It'd be cool i
 I am in no way a professional programmer and my code is probably terrible, but it gets the job done and I can easily refactor it.
 
 ## Info
-SourceEditor is licensed GNU GPL v3.0 license, you can find it's license [here](license_sourceeditor.md). As we are including Source SDK here, it is not licensed under GPL v3.0 it is instead under it's own license, which you can find [here](license_sourceengine.md).
+SourceEditor is licensed under the MIT license, you can find it's license [here](license_sourceeditor.md). As we are including Source SDK here, it is not licensed under MIT it is instead under it's own license, which you can find [here](license_sourceengine.md).
 
 You can check out our trello [here](https://trello.com/b/jBHyA5mG/sourceeditor) this shows our current roadmap and things we plan to do.
