@@ -1,6 +1,7 @@
 # Ignore the build
 sourceeditor.exe
 sourceeditor.pdb
+Qt*.dll
 
 # Ignore bin for now
 bin/
