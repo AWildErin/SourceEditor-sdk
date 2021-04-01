@@ -31,10 +31,13 @@ $Project "SourceEditor (Launcher)"
         $Folder "Windows"
         {
 			//$File "windows/SourceEditorDialog.h"
-			//$File "windows/SourceEditorDialog.cpp"
+			$File "windows/dialog.cpp"
+			$File "windows/dialog.h"
+			$File "windows/dialog.ui"
         }
 
         $File "main.cpp"
+		-$File	"$SRCDIR\public\tier0\memoverride.cpp"
     }
 
     $Folder "Header Files"
@@ -51,8 +54,8 @@ $Project "SourceEditor (Launcher)"
 
 	$Folder	"Link Libraries"
 	{
-		$Lib bitmap
-		$Lib appframework
-		$Lib mathlib
 		$Lib tier2
+		$Lib appframework
+		$Lib bitmap
+		$Lib mathlib
 	}
