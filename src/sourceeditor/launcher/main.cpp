@@ -1,5 +1,6 @@
 #include "appframework/AppFramework.h"
 #include "tier0/icommandline.h"
+#include "editortoolframework/ieditortoolframework.h"
 
 // Qt includes
 #include <QtGui/qapplication.h>
@@ -8,9 +9,7 @@
 
 /*
 Todo: fix stylesheet not loading from file.
-Todo: fix Qt not working well with Source files, to do with runtime library
 */
-
 class CSourceEditorApp : public CSteamAppSystemGroup
 {
 public:
@@ -26,9 +25,16 @@ bool CSourceEditorApp::Create()
 {
 	qDebug() << "Running Create()";
 
-	if (!CommandLine()->CheckParm("-nop4"))
+	AppSystemInfo_t appSystems[] =
 	{
-		qDebug() << "Launching with p4 source control";
+		{"toolframework.dll",	EDTIORTOOLFRAMEWORK_INTERFACE_VERSION},
+		{ "", "" }	// Required to terminate the list
+	};
+
+	if (!AddSystems(appSystems))
+	{
+		Warning("App systems failed to load\n");
+		return false;
 	}
 
 	return true;
