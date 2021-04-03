@@ -13,7 +13,7 @@ $Configuration
 {
 	$Compiler
 	{
-		$AdditionalIncludeDirectories		"$BASE,$SRCDIR/common"
+		$AdditionalIncludeDirectories		"$BASE,$SRCDIR/common,../public"
 	}
 
 	$Linker
@@ -26,7 +26,7 @@ $Project "Tool Framework"
 {
 	$Folder "Public Header Files"
 	{
-		$File	"..\public\toolframework\ieditortoolframework.h"
+		$File	"..\public\editortoolframework\ieditortoolframework.h"
 	}
 
     $Folder "Header Files"
