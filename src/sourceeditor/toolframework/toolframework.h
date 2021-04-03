@@ -5,6 +5,13 @@
 #endif
 
 #include "editortoolframework/ieditortoolframework.h"
+#include "toolframework/itoolsystem.h"
+#include "tier1/utlvector.h"
+#include "tier1/tier1.h"
+
+class IToolSystem;
+
+extern CreateInterfaceFn g_AppSystemFactory;
 
 class CToolFramework : public IEditorToolFramework
 {
@@ -22,10 +29,10 @@ public:
 public:
 	// Methods of IEditorToolFramework
 	virtual bool PostInit();
-	virtual void Tink(bool finalTick);
+	virtual void Think(bool finalTick);
 
 	virtual int GetToolCount();
-	virtual const char* GetToolName();
+	virtual char const* GetToolName(int index);
 
 private:
 
@@ -36,13 +43,21 @@ private:
 	// This is used mainly for StandaloneTool
 	void LoadTool(const char* pDllName);
 
-	// Shutsdown all our tools
+	// Shutdown/Unload all our tools
 	void ShutdownTools();
 
 	// Unloads/Shutdown a tool. This is called from our console
 	// and is mainly added for tool development.
 	void ShutdownTool(const char* pDllName);
 
+	// Update to our own tool interface
+	CUtlVector<IToolSystem*> m_ToolSystems;
 };
+
+static CToolFramework g_ToolFramework;
+//IEditorToolFramework* editorToolFramework = g_ToolFramework;
+
+// Exposed because it's an IAppSystem
+EXPOSE_SINGLE_INTERFACE_GLOBALVAR(CToolFramework, IEditorToolFramework, EDTIORTOOLFRAMEWORK_INTERFACE_VERSION, g_ToolFramework);
 
 #endif // !TOOLFRAMEWORK_H

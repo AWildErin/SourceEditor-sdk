@@ -16,13 +16,13 @@ public:
 public:
 	// General hooks
 	virtual int			GetToolCount() = 0;
-	virtual const char* GetToolName(int index) = 0;
+	virtual char const* GetToolName(int index) = 0;
 };
 
 // Expose to the rest of the engine
 extern IEditorToolFramework* editorToolFramework;
 
 // Exposed for the AppSystemGroup hooks
-#define EDTIORTOOLFRAMEWORK_INTERFACE_VERSION	"EDITORTOOLFRAMEWORKVERSION001"
+#define EDTIORTOOLFRAMEWORK_INTERFACE_VERSION	"EditorToolFrameworkVersion001"
 
 #endif // IEDITORTOOLFRAMEWORK_H
