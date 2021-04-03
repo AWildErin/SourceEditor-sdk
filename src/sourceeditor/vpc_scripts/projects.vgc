@@ -8,3 +8,8 @@ $Project "sourceeditor_launcher"
 {
 	"sourceeditor\launcher\sourceeditor_launcher.vpc" [$WIN32]
 }
+
+$Project "toolzoo"
+{
+	"sourceeditor\tools\toolzoo\toolzoo.vpc"
+}

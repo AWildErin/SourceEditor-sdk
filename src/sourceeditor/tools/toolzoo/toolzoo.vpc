@@ -1,0 +1,41 @@
+//-----------------------------------------------------------------------------
+//	VMT.VPC
+//
+//	Project Script
+//-----------------------------------------------------------------------------
+
+$Macro SRCDIR		"..\..\.."
+$Macro OUTBINDIR	"$SRCDIR\..\game\sourceeditor\tools\$OUTBINNAME"
+
+$Include "$SRCDIR\vpc_scripts\source_dll_qt_base.vpc"
+
+$Configuration
+{
+	$Compiler
+	{
+		$AdditionalIncludeDirectories		"$BASE,../common"
+	}
+
+	$Linker
+	{
+		$AdditionalDependencies				"$BASE Psapi.lib"
+	}
+}
+
+$Project "Tool Zoo"
+{
+	$Folder	"Source Files"
+	{
+        $File "toolzoo.cpp"
+	}
+
+    $Folder "Header Files"
+    {
+
+    }
+
+	$Folder	"Link Libraries"
+	{
+		$Lib mathlib
+	}
+}
