@@ -2,7 +2,7 @@
 //
 //==================================================================================================
 
-$Macro	QT_ROOT	"$SRCDIR\thirdparty\qt-release"
+$Macro	QT_ROOT	"$SRCDIR\thirdparty\qt"
 
 $Include "$SRCDIR\vpc_scripts\source_dll_base.vpc"
 $Include "$SRCDIR\vpc_scripts\qt_base.vpc"
