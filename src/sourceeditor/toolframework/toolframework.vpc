@@ -4,7 +4,7 @@
 //	Project Script
 //-----------------------------------------------------------------------------
 
-$Macro SRCDIR		"..\..\.."
+$Macro SRCDIR		"..\.."
 $Macro OUTBINDIR	"$SRCDIR\..\game\sourceeditor\bin\"
 
 $Include "$SRCDIR\vpc_scripts\source_dll_base.vpc"
@@ -13,7 +13,7 @@ $Configuration
 {
 	$Compiler
 	{
-		$AdditionalIncludeDirectories		"$BASE,../common"
+		$AdditionalIncludeDirectories		"$BASE,$SRCDIR/common"
 	}
 
 	$Linker
@@ -22,7 +22,7 @@ $Configuration
 	}
 }
 
-$Project "Tool Zoo"
+$Project "Tool Framework"
 {
 	$Folder	"Source Files"
 	{
