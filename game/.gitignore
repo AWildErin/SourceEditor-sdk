@@ -8,4 +8,4 @@ sourceeditor/sourceeditor.pdb
 sourceeditor/Qt*.dll
 
 sourceeditor/tools/**/*.dll
-sourceeditor/tools/**/pdb.dll
+sourceeditor/tools/**/*.pdb
