@@ -24,6 +24,16 @@ $Configuration
 
 $Project "Tool Framework"
 {
+	$Folder "Public Header Files"
+	{
+		$File	"..\public\toolframework\ieditortoolframework.h"
+	}
+
+    $Folder "Header Files"
+    {
+
+    }
+
 	$Folder	"Source Files"
 	{
         -$File	"$SRCDIR\public\tier0\memoverride.cpp"
@@ -31,11 +41,6 @@ $Project "Tool Framework"
 		$File	"toolframework.cpp"
 		$File	"toolframework.h"
 	}
-
-    $Folder "Header Files"
-    {
-
-    }
 
 	$Folder	"Link Libraries"
 	{
