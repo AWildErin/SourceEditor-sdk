@@ -1,0 +1,8 @@
+# Ignore bin for now
+bin/
+
+# Source Editor Specific
+sourceeditor/resources/
+sourceeditor/sourceeditor.exe
+sourceeditor/sourceeditor.pdb
+sourceeditor/Qt*.dll
