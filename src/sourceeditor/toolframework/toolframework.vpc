@@ -1,0 +1,44 @@
+//-----------------------------------------------------------------------------
+//	VMT.VPC
+//
+//	Project Script
+//-----------------------------------------------------------------------------
+
+$Macro SRCDIR		"..\..\.."
+$Macro OUTBINDIR	"$SRCDIR\..\game\sourceeditor\bin\"
+
+$Include "$SRCDIR\vpc_scripts\source_dll_base.vpc"
+
+$Configuration
+{
+	$Compiler
+	{
+		$AdditionalIncludeDirectories		"$BASE,../common"
+	}
+
+	$Linker
+	{
+		$AdditionalDependencies				"$BASE Psapi.lib"
+	}
+}
+
+$Project "Tool Zoo"
+{
+	$Folder	"Source Files"
+	{
+        -$File	"$SRCDIR\public\tier0\memoverride.cpp"
+
+		$File	"toolframework.cpp"
+		$File	"toolframework.h"
+	}
+
+    $Folder "Header Files"
+    {
+
+    }
+
+	$Folder	"Link Libraries"
+	{
+		$Lib mathlib
+	}
+}

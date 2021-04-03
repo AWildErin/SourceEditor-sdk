@@ -9,6 +9,11 @@ $Project "sourceeditor_launcher"
 	"sourceeditor\launcher\sourceeditor_launcher.vpc" [$WIN32]
 }
 
+$Project "toolframework"
+{
+	"sourceeditor\toolframework\toolframework.vpc"
+}
+
 $Project "toolzoo"
 {
 	"sourceeditor\tools\toolzoo\toolzoo.vpc"
