@@ -10,5 +10,5 @@ $Group "sourceeditor"
     "toolframework"
 
     // Tools
-    //"toolzoo"
+    "toolzoo"
 }
