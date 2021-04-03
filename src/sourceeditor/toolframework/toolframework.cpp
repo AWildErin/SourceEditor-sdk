@@ -2,9 +2,21 @@
 #include "tier0/icommandline.h"
 #include "tier1/KeyValues.h"
 #include "tier1/tier1.h"
+#include "filesystem.h"
+
+IBaseFileSystem* g_pFileSystem;
 
 bool CToolFramework::Connect(CreateInterfaceFn factory)
 {
+	g_pFileSystem = (IBaseFileSystem*)factory(BASEFILESYSTEM_INTERFACE_VERSION, NULL);
+
+	if (!g_pFileSystem)
+	{
+		Msg("Tool Framework: Failed to connect\n");
+		return false;
+	}
+
+	Msg("Tool Framework: Connected uccessfully\n");
 	return true;
 }
 
@@ -26,6 +38,8 @@ InitReturnVal_t CToolFramework::Init()
 
 void CToolFramework::Shutdown()
 {
+	g_pFileSystem = nullptr;
+
 	ShutdownTools();
 }
 
