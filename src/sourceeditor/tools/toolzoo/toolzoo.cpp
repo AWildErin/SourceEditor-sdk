@@ -5,9 +5,9 @@
 //
 //======================================================//
 
-#include "toolframework/ienginetool.h"
+#include "editortoolframework/itool.h"
 
-class CToolZoo
+class CToolZoo : public ITool
 {
 
 };

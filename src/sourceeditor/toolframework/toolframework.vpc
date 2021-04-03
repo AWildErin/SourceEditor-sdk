@@ -27,6 +27,7 @@ $Project "Tool Framework"
 	$Folder "Public Header Files"
 	{
 		$File	"..\public\editortoolframework\ieditortoolframework.h"
+		$File	"..\public\editortoolframework\itool.h"
 	}
 
     $Folder "Header Files"
