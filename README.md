@@ -8,6 +8,9 @@ See our docs for information on how to build it, make your own tools and more.
 I got inspritation from the Source 2 tools and thought to myself "It'd be cool if something like that existed for Source 1" so I thought about this project and I started to do it.
 I am in no way a professional programmer and my code is probably terrible, but it gets the job done and I can easily refactor it.
 
+## Questions
+**Does this contain leaked code?** No it doesn't. I used leaked code to gain some understanding of how Source works, but this project does not use leaked code. Everything we do here was done with the base SDK.
+
 ## Info
 SourceEditor is licensed under the MIT license, you can find it's license [here](license_sourceeditor.md). As we are including Source SDK here, it is not licensed under MIT it is instead under it's own license, which you can find [here](license_sourceengine.md).
 
