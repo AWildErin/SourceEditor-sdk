@@ -55,7 +55,7 @@ private:
 };
 
 static CToolFramework g_ToolFramework;
-//IEditorToolFramework* editorToolFramework = g_ToolFramework;
+IEditorToolFramework* editorToolFramework = &g_ToolFramework;
 
 // Exposed because it's an IAppSystem
 EXPOSE_SINGLE_INTERFACE_GLOBALVAR(CToolFramework, IEditorToolFramework, EDTIORTOOLFRAMEWORK_INTERFACE_VERSION, g_ToolFramework);

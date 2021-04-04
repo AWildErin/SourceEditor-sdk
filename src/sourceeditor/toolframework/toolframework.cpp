@@ -4,11 +4,12 @@
 #include "tier1/tier1.h"
 #include "filesystem.h"
 
-IBaseFileSystem* g_pFileSystem;
+IFileSystem* g_pFileSystem;
 
 bool CToolFramework::Connect(CreateInterfaceFn factory)
 {
-	g_pFileSystem = (IBaseFileSystem*)factory(BASEFILESYSTEM_INTERFACE_VERSION, NULL);
+	//g_pFileSystem = (IBaseFileSystem*)factory(BASEFILESYSTEM_INTERFACE_VERSION, NULL);
+	g_pFileSystem = (IFileSystem*)factory(FILESYSTEM_INTERFACE_VERSION, NULL);
 
 	if (!g_pFileSystem)
 	{
@@ -16,7 +17,7 @@ bool CToolFramework::Connect(CreateInterfaceFn factory)
 		return false;
 	}
 
-	Msg("Tool Framework: Connected uccessfully\n");
+	Msg("Tool Framework: Connected successfully\n");
 	return true;
 }
 
@@ -67,10 +68,55 @@ char const* CToolFramework::GetToolName(int index)
 void CToolFramework::LoadTools()
 {
 	Msg("Loading all the tools\n");
-	for (int i = 1; i < 10; i++)
+
+	FileFindHandle_t fileHandle;
+	const char* pFilename = g_pFileSystem->FindFirstEx("../tools/*.*", "EXECUTABLE_PATH", &fileHandle);
+
+	while (pFilename)
 	{
-		Msg("Loading tool: %i\n", i);
+		if (V_stricmp(pFilename, ".") != 0 && V_stricmp(pFilename, "..") != 0)
+		{
+			if (g_pFileSystem->FindIsDirectory(fileHandle))
+			{
+				KeyValues* toolData = new KeyValues("tooldata");
+
+				char toolDataPath[MAX_PATH];
+				V_snprintf(toolDataPath, sizeof(toolDataPath), "../tools/%s/tool.vdf", pFilename);
+
+				if( toolData && toolData->LoadFromFile(g_pFileSystem, toolDataPath, "EXECUTABLE_PATH"))
+				{
+					for (KeyValues* tool = toolData->GetFirstSubKey();
+						tool != NULL;
+						tool = tool->GetNextKey())
+					{
+						Msg("Tool Framework: %s\n", tool->GetString("m_Name"));
+						Msg("Tool Framework: %s\n", tool->GetString("m_FriendlyName"));
+					}
+					toolData->deleteThis();
+				}
+
+			}
+		}
+
+		pFilename = g_pFileSystem->FindNext(fileHandle);
 	}
+	g_pFileSystem->FindClose(fileHandle);
+
+	/*
+	KeyValues* toolData = new KeyValues("tooldata");
+	char* testFilePath = "../tools/hammer/tool.vdf";
+
+	if (toolData && toolData->LoadFromFile(g_pFileSystem, testFilePath, "EXECUTABLE_PATH"))
+	{
+		for (KeyValues* tool = toolData->GetFirstSubKey();
+			tool != NULL;
+			tool = tool->GetNextKey())
+		{
+			Msg("Tool Framework: %s\n", tool->GetString("m_Name"));
+			Msg("Tool Framework: %s\n", tool->GetString("m_FriendlyName"));
+		}
+	}
+	*/
 }
 
 void CToolFramework::LoadTool(const char* pDllName)
