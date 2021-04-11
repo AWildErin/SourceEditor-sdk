@@ -6,7 +6,7 @@
 
 // Here you can supply your own conditionals and the like.
 
-$Conditional "QTDEBUG" "1"
+$Conditional "QTDEBUG" "0"
 
 // Add SourceEditor VPC scripts
 $Include "sourceeditor\vpc_scripts\projects.vgc"
