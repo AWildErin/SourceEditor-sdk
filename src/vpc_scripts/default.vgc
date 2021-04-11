@@ -20,7 +20,6 @@ $Conditional "SOURCESDK" "1"
 $Include "vpc_scripts\projects.vgc"
 $Include "vpc_scripts\groups.vgc"
 
-// Add SourceEditor VPC scripts
-$Include "sourceeditor\vpc_scripts\projects.vgc"
-$Include "sourceeditor\vpc_scripts\groups.vgc"
+// Add SourceEditor default script
+$Include "sourceeditor\vpc_scripts\default.vgc"
 

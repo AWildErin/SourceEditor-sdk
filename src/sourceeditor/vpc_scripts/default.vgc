@@ -1,0 +1,13 @@
+//-----------------------------------------------------------------------------
+//	DEFAULT.VGC
+//
+//	Configurations for all SourceEditor projects
+//-----------------------------------------------------------------------------
+
+// Here you can supply your own conditionals and the like.
+
+$Conditional "QTDEBUG" "1"
+
+// Add SourceEditor VPC scripts
+$Include "sourceeditor\vpc_scripts\projects.vgc"
+$Include "sourceeditor\vpc_scripts\groups.vgc"
