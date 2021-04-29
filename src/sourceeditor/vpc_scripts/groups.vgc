@@ -8,6 +8,7 @@ $Group "sourceeditor"
 {
     "sourceeditor_launcher"
     "toolframework"
+    "scriptsystem"
 
     // Tools
     "toolzoo"

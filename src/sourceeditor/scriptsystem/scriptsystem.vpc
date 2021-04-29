@@ -1,0 +1,48 @@
+//-----------------------------------------------------------------------------
+//	SCRIPTSYSTEM.VPC
+//
+//	Project Script
+//-----------------------------------------------------------------------------
+
+$Macro SRCDIR		"..\.."
+$Macro OUTBINDIR	"$SRCDIR\..\game\sourceeditor\bin\"
+
+$Include "$SRCDIR\vpc_scripts\source_dll_base.vpc"
+
+$Configuration
+{
+	$Compiler
+	{
+		$AdditionalIncludeDirectories		"$BASE,$SRCDIR/common,../public"
+	}
+
+	$Linker
+	{
+		$AdditionalDependencies				"$BASE Psapi.lib"
+	}
+}
+
+$Project "Script System"
+{
+	$Folder "Public Header Files"
+	{
+		$File	"..\public\scriptsystem\iscriptsystem.h"
+	}
+
+    $Folder "Header Files"
+    {
+		$File	"scriptsystem.h"
+    }
+
+	$Folder	"Source Files"
+	{
+        -$File	"$SRCDIR\public\tier0\memoverride.cpp"
+
+		$File	"scriptsystem.cpp"
+	}
+
+	$Folder	"Link Libraries"
+	{
+		$Lib mathlib
+	}
+}

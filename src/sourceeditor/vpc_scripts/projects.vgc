@@ -14,6 +14,11 @@ $Project "toolframework"
 	"sourceeditor\toolframework\toolframework.vpc"
 }
 
+$Project "scriptsystem"
+{
+	"sourceeditor\scriptsystem\scriptsystem.vpc"
+}
+
 $Project "toolzoo"
 {
 	"sourceeditor\tools\toolzoo\toolzoo.vpc"
