@@ -1,6 +1,7 @@
 #include "appframework/AppFramework.h"
 #include "tier0/icommandline.h"
 #include "editortoolframework/ieditortoolframework.h"
+#include "scriptsystem/iscriptsystem.h"
 
 // Qt includes
 #include <QtGui/qapplication.h>
@@ -28,6 +29,7 @@ bool CSourceEditorApp::Create()
 	AppSystemInfo_t appSystems[] =
 	{
 		{"toolframework.dll",	EDTIORTOOLFRAMEWORK_INTERFACE_VERSION},
+		{"scriptsystem.dll",	SCRIPTSYSTEM_INTERFACE_VERSION},
 		{ "", "" }	// Required to terminate the list
 	};
 

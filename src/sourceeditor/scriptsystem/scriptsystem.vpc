@@ -7,13 +7,15 @@
 $Macro SRCDIR		"..\.."
 $Macro OUTBINDIR	"$SRCDIR\..\game\sourceeditor\bin\"
 
+$Macro MONO_DIR		"$SRCDIR\thirdparty\Mono"
+
 $Include "$SRCDIR\vpc_scripts\source_dll_base.vpc"
 
 $Configuration
 {
 	$Compiler
 	{
-		$AdditionalIncludeDirectories		"$BASE,$SRCDIR/common,../public"
+		$AdditionalIncludeDirectories		"$BASE,$SRCDIR/common,../public,$MONO_DIR/include/mono-2.0"
 	}
 
 	$Linker
@@ -44,5 +46,6 @@ $Project "Script System"
 	$Folder	"Link Libraries"
 	{
 		$Lib mathlib
+		$Lib "$MONO_DIR\lib\mono-2.0-sgen"
 	}
 }
