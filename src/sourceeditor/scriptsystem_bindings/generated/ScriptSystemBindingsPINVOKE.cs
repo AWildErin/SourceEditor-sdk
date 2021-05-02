@@ -195,6 +195,12 @@ class ScriptSystemBindingsPINVOKE {
 
   [global::System.Runtime.InteropServices.DllImport("scriptsystem", EntryPoint="CSharp_ScriptSystemfBindings_Msg___")]
   public static extern void Msg(string jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("scriptsystem", EntryPoint="CSharp_ScriptSystemfBindings_Warning___")]
+  public static extern void Warning(string jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("scriptsystem", EntryPoint="CSharp_ScriptSystemfBindings_Log___")]
+  public static extern void Log(string jarg1);
 }
 
 }

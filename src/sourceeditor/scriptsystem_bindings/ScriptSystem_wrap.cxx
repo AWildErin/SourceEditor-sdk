@@ -315,6 +315,24 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ScriptSystemfBindings_Msg___(char * jarg1) {
 }
 
 
+SWIGEXPORT void SWIGSTDCALL CSharp_ScriptSystemfBindings_Warning___(char * jarg1) {
+  char *arg1 = (char *) 0 ;
+  void *arg2 = 0 ;
+  
+  arg1 = (char *)jarg1; 
+  Warning((char const *)arg1,arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ScriptSystemfBindings_Log___(char * jarg1) {
+  char *arg1 = (char *) 0 ;
+  void *arg2 = 0 ;
+  
+  arg1 = (char *)jarg1; 
+  Log((char const *)arg1,arg2);
+}
+
+
 #ifdef __cplusplus
 }
 #endif

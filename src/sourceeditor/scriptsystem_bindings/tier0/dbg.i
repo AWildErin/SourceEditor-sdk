@@ -5,3 +5,7 @@
 %}
 
 void Msg(const char* fmt, ...);
+
+void Warning(const char* fmt, ...);
+
+void Log(const char* fmt, ...);

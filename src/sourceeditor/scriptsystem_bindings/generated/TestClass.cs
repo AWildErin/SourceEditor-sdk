@@ -6,11 +6,8 @@ public class TestClass
 { 
 	public static void TestBindings()
 	{
-		ScriptSystemBindings.Msg("Hello from C# and Mono :)\n");
-
-		if (SourceCommandLine.FindParm("-testbeans") == 1)
-		{
-			ScriptSystemBindings.Msg("WE GOT THE BEANS\n");
-		}
+		ScriptSystemBindings.Msg("C# Testing Msg()\n");
+		ScriptSystemBindings.Warning("C# Testing Warning()\n");
+		ScriptSystemBindings.Log("C# Testing Log()\n");
 	}
 }

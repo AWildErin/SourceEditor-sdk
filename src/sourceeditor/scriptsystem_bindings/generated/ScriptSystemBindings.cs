@@ -15,6 +15,14 @@ public class ScriptSystemBindings {
     ScriptSystemBindingsPINVOKE.Msg(fmt);
   }
 
+  public static void Warning(string fmt) {
+    ScriptSystemBindingsPINVOKE.Warning(fmt);
+  }
+
+  public static void Log(string fmt) {
+    ScriptSystemBindingsPINVOKE.Log(fmt);
+  }
+
 }
 
 }
