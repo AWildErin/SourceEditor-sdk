@@ -41,6 +41,11 @@ $Project "Script System"
         -$File	"$SRCDIR\public\tier0\memoverride.cpp"
 
 		$File	"scriptsystem.cpp"
+
+		$Folder "Generated Files"
+		{
+			$File	"../scriptsystem_bindings/ScriptSystem_wrap.cxx"
+		}
 	}
 
 	$Folder	"Link Libraries"

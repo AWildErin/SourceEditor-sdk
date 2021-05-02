@@ -7,6 +7,10 @@ docs/site/
 src/thirdparty/qt*
 **/generated_code_DO_NOT_CHECK_THESE_IN/
 
+# Mono ignores
+src/thirdparty/Mono
+src/thirdparty/swig*
+
 # Visual Studio 
 *.suo
 *.user

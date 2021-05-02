@@ -2,6 +2,7 @@
 #include "tier0/icommandline.h"
 #include "tier1/tier1.h"
 #include "filesystem.h"
+#include "tier0/icommandline.h"
 
 // Mono
 #include <mono/jit/jit.h>
@@ -65,7 +66,7 @@ void CScriptSystem::LoadMono()
 
 	// Init a domain
 	MonoDomain* domain;
-	domain = mono_jit_init("MonoScriptTry");
+	domain = mono_jit_init("ScriptSystem");
 	if (!domain)
 	{
 		Warning("Script System: mono_jit_init failed\n");
@@ -74,7 +75,7 @@ void CScriptSystem::LoadMono()
 
 	// Open an assembly in the domain
 	MonoAssembly* assembly;
-	char* assemblyPath = "E:/Repositories/Source-Engine-Related/SourceEditor/game/sourceeditor/bin/managed/dog.dll";
+	char* assemblyPath = "E:/Repositories/Source-Engine-Related/SourceEditor/game/sourceeditor/bin/managed/TestClass.dll";
 	assembly = mono_domain_assembly_open(domain, assemblyPath);
 	if (!assembly)
 	{
@@ -97,7 +98,7 @@ void CScriptSystem::LoadMono()
 	
 	// Build a method description object
 	MonoMethodDesc* TypeMethodDesc;
-	char* TypeMethodDescStr = "Dog:Test1()";
+	char* TypeMethodDescStr = "TestClass:TestBindings()";
 	TypeMethodDesc = mono_method_desc_new(TypeMethodDescStr, NULL);
 	if (!TypeMethodDesc)
 	{
@@ -110,7 +111,7 @@ void CScriptSystem::LoadMono()
 	method = mono_method_desc_search_in_image(TypeMethodDesc, image);
 	if (!method)
 	{
-		Warning("Script System: mono_method_desc_search_in_image\n");
+		Warning("Script System: mono_method_desc_search_in_image failed\n");
 		return;
 	}
 
