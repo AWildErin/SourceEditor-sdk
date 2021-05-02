@@ -14,8 +14,7 @@ unchecked ⬜️
 
 | Header         | Class      | Swig location      | Completed |
 |----------------|------------|--------------------|-----------|
-| tier1/convar.h | ConCommand | tier1/ConCommand.i | ⬜️   	   |
-| tier1/convar.h | ConVar     | tier1/ConVar.i     | ⬜️        |
+| tier0/dbg.h    | Logging    | tier0/dbg.i        | ⬜️   	   |
 
 ### Entities
 
