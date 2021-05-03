@@ -11,9 +11,9 @@ To do: Add information here on how to create a VPC script
 After you have made your VPC script, you will need to add it to our project.vgc. Navigate to `src/sourceeditor/vpc_scripts/projects.vgc` and add a value following this template
 
 ```
-$Project "captioncompiler"
+$Project "<your project name>"
 {
-	"sourceeditor\<path to your tool/project>.vpc" [$WIN32]
+	"sourceeditor/<path to your tool/project>.vpc" [$WIN32]
 }
 ```
 
