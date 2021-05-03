@@ -5,6 +5,9 @@
 
 // Qt includes
 #include <QtGui/qapplication.h>
+#include <Qt/qlabel.h>
+#include <Qt/qfile.h>
+#include <Qt/qdir.h>
 #include <QtCore/qdebug.h>
 #include "windows/dialog.h"
 
@@ -51,6 +54,10 @@ bool CSourceEditorApp::PreInit()
 
 int CSourceEditorApp::Main()
 {
+	QFile file("resources:/stylesheets/sourceeditor.qss");
+	file.open(QFile::ReadOnly);
+	QString styleSheet = QLatin1String(file.readAll());
+	qApp->setStyleSheet(styleSheet);
 
 	Dialog w;
 	w.show();
@@ -74,6 +81,11 @@ int main(int argc, char* argv[])
 {
 	CommandLine()->CreateCmdLine(argc, argv);
 	QApplication app(argc, argv);
+
+	// Set our search paths so tools have a general way
+	// to search for resources
+	QDir::setSearchPaths("resources", QStringList("./resources"));
+	QDir::setSearchPaths("toolimages", QStringList("resources:/images"));
 
 	CSourceEditorApp editorApp;
 	CSteamApplication steamApplication(&editorApp);
