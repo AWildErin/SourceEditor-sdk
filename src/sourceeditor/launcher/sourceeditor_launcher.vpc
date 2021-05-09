@@ -34,6 +34,8 @@ $Project "SourceEditor (Launcher)"
 			$File "windows/dialog.cpp"
 			$File "windows/dialog.h"
 			$File "windows/dialog.ui"
+
+			$File "windows/dialog.moc"
         }
 
         $File "main.cpp"

@@ -1,7 +1,11 @@
 #include "dialog.h"
-#include "generated_code_DO_NOT_CHECK_THESE_IN/ui_dialog.h"
 #include <QtCore/qstring.h>
 #include <QtGui/qmessagebox.h>
+
+// Generated files
+#include "dialog.moc"
+#include "generated_code_DO_NOT_CHECK_THESE_IN/ui_dialog.h"
+
 
 Dialog::Dialog(QWidget* parent) :
     QDialog(parent),
