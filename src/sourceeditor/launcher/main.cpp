@@ -1,5 +1,7 @@
 #include "appframework/AppFramework.h"
 #include "tier0/icommandline.h"
+#include "tier1/tier1.h"
+
 #include "editortoolframework/ieditortoolframework.h"
 #include "scriptsystem/iscriptsystem.h"
 
@@ -49,6 +51,9 @@ bool CSourceEditorApp::PreInit()
 {
 	qDebug() << "Running PreInit()";
 
+	CreateInterfaceFn factory = GetFactory();
+	ConnectTier1Libraries(&factory, 1);
+
 	return true;
 }
 
@@ -69,7 +74,7 @@ int CSourceEditorApp::Main()
 
 void CSourceEditorApp::PostShutdown()
 {
-
+	DisconnectTier1Libraries();
 }
 
 void CSourceEditorApp::Destroy()
