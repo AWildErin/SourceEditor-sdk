@@ -11,8 +11,8 @@ $Macro QT_UI_TOOL					"$QT_ROOT\bin\uic.exe"
 $Macro QT_QRC_TOOL					"$QT_ROOT\bin\rcc.exe"
 $Macro QT_TARGET_SUBDIR				"generated_code_DO_NOT_CHECK_THESE_IN"
 
-$Macro QT_MOC_DEFINES				"-DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -D_MSC_VER=1400"
-$Macro QT_MOC_INCLUDES				"-I;$QT_ROOT\include\QtCore; -I;$QT_ROOT\include\QtGui; -I;$QT_ROOT\include; -I;$QT_ROOT\include\ActiveQt; -I;.; -I;$QT_ROOT\mkspecs\win32-msvc2005"
+$Macro QT_MOC_DEFINES				"-DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -D_MSC_VER=1800"
+$Macro QT_MOC_INCLUDES				"-I;$QT_ROOT\include\QtCore; -I;$QT_ROOT\include\QtGui; -I;$QT_ROOT\include; -I;$QT_ROOT\include\ActiveQt; -I;.; -I;$QT_ROOT\mkspecs\win32-msvc2013"
 
 $Macro QT_MOC_COMMAND_PREFIX		"$QT_MOC_TOOL $QT_MOC_DEFINES $QT_MOC_INCLUDES"
 $Macro QT_UI_COMMAND_PREFIX			"$QT_UI_TOOL"
@@ -29,7 +29,7 @@ $Macro QT_OUTPUT_UI					"$(InputDir)$QT_TARGET_SUBDIR\ui_$(InputName).h"
 $Macro QT_OUTPUT_QRC				"$(InputDir)$QT_TARGET_SUBDIR\qrc_$(InputName).cpp"
 
 $Macro QT_COMMAND_SUFFIX_H			"$(InputPath) -o $QT_OUTPUT_H"
-$Macro QT_COMMAND_SUFFIX_MOC		"$(InputName).cpp -o $QT_OUTPUT_MOC"
+$Macro QT_COMMAND_SUFFIX_MOC		"$(InputDir)$(InputName).h -o $QT_OUTPUT_MOC"
 $Macro QT_COMMAND_SUFFIX_UI			"$(InputPath) -o $QT_OUTPUT_UI"
 $Macro QT_COMMAND_SUFFIX_QRC		"$(InputPath) -o $QT_OUTPUT_QRC"
 
