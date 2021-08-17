@@ -9,3 +9,6 @@ sourceeditor/Qt*.dll
 
 sourceeditor/tools/**/*.dll
 sourceeditor/tools/**/*.pdb
+
+sourceeditor/hammer.exe
+sourceeditor/hammer.pdb
