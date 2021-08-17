@@ -12,4 +12,5 @@ $Group "sourceeditor"
 
     // Tools
     "toolzoo"
+    "hammer"
 }

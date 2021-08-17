@@ -1,0 +1,69 @@
+//-----------------------------------------------------------------------------
+//	HAMMER.VPC
+//
+//	Project Script
+//-----------------------------------------------------------------------------
+
+$Macro SRCDIR		"..\.."
+$Macro OUTBINDIR	"$SRCDIR\..\game\sourceeditor"
+$Macro OUTBINNAME	"hammer"
+
+$Include "$SRCDIR\vpc_scripts\source_exe_qt_win32_base.vpc"
+
+$Configuration
+{
+	$Compiler
+	{
+		$AdditionalIncludeDirectories		"$BASE,$SRCDIR\utils\common;..\public;$SRCDIR\public"
+		$PreprocessorDefinitions			"$BASE;VERSION_SAFE_STEAM_API_INTERFACES"
+	}
+
+	$Linker
+	{
+		$AdditionalDependencies				"$BASE odbc32.lib odbccp32.lib WS2_32.LIB"
+	}
+}
+
+$Project "Hammer Map Editor"
+{
+    $Folder "Source Files"
+    {
+        $Folder "Tools"
+        {
+
+        }
+
+        $Folder "Helpers/Map Classes"
+        {
+
+        }
+
+        $Folder "Windows"
+        {
+            $File   "windows/mainwindow.cpp"
+            $File   "windows/mainwindow.h"
+            $File   "windows/mainwindow.moc"
+            $File   "windows/mainwindow.ui"
+        }
+
+		$File	"main.cpp"
+        $File   "hammer.cpp"
+        $File   "hammer.h"
+		-$File  "$SRCDIR\public\tier0\memoverride.cpp"
+    }
+
+	$Folder	"Resource Files"
+	{
+		//$File "icon2.ico"
+		//$File "Script1.rc"
+		//$File "steam.ico"
+	}
+
+	$Folder	"Link Libraries"
+	{
+		$Lib tier2
+		$Lib tier3
+		$Lib appframework
+		$Lib bitmap
+		$Lib mathlib
+	}
