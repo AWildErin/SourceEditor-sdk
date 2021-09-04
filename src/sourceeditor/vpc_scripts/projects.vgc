@@ -23,3 +23,8 @@ $Project "toolzoo"
 {
 	"sourceeditor\tools\toolzoo\toolzoo.vpc"
 }
+
+$Project "hammer"
+{
+	"sourceeditor\hammer\hammer.vpc"
+}
