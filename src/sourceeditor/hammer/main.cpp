@@ -28,6 +28,7 @@
 IFileSystem *g_pFileSystem;
 CreateInterfaceFn g_Factory;
 IStudioRender	*g_pStudioRender;
+IMDLCache *g_pMDLCache;
 //IMaterialSystem *g_pMaterialSystem;
 
 class CHammerApp : public CSteamAppSystemGroup
@@ -84,6 +85,7 @@ bool CHammerApp::Create()
 		{ "materialsystem.dll",		MATERIAL_SYSTEM_INTERFACE_VERSION },
 		{ "studiorender.dll",		STUDIO_RENDER_INTERFACE_VERSION },
 		{ "datacache.dll",			DATACACHE_INTERFACE_VERSION },
+		{ "datacache.dll",			MDLCACHE_INTERFACE_VERSION },
 
 		{ "", "" }	// Required to terminate the list
 	};
@@ -101,8 +103,9 @@ bool CHammerApp::Create()
 	g_pFileSystem = (IFileSystem *)FindSystem( FILESYSTEM_INTERFACE_VERSION );
 	g_pMaterialSystem = (IMaterialSystem *)FindSystem( MATERIAL_SYSTEM_INTERFACE_VERSION );
 	g_pStudioRender = (IStudioRender *)FindSystem( STUDIO_RENDER_INTERFACE_VERSION );
+	g_pMDLCache = (IMDLCache *)FindSystem( MDLCACHE_INTERFACE_VERSION );
 
-	if (!g_pFileSystem || !g_pMaterialSystem || !g_pStudioRender)
+	if ( !g_pFileSystem || !g_pMaterialSystem || !g_pStudioRender || !g_pMDLCache )
 	{
 		Warning( "Failed to load required systems\n" );
 		return false;
