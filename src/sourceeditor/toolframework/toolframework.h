@@ -5,11 +5,11 @@
 #endif
 
 #include "editortoolframework/ieditortoolframework.h"
-#include "toolframework/itoolsystem.h"
+#include "editortoolframework/itool.h"
 #include "tier1/utlvector.h"
 #include "tier1/tier1.h"
 
-class IToolSystem;
+//class IToolSystem;
 
 extern CreateInterfaceFn g_AppSystemFactory;
 
@@ -50,8 +50,8 @@ private:
 	// and is mainly added for tool development.
 	void ShutdownTool(const char* pDllName);
 
-	// Update to our own tool interface
-	CUtlVector<IToolSystem*> m_ToolSystems;
+	CUtlVector<ITool*> m_Tools;
+	CUtlVector<CSysModule*> m_Modules;
 };
 
 static CToolFramework g_ToolFramework;

@@ -13,7 +13,7 @@ IFileSystem* g_pFileSystem;
 
 bool CScriptSystem::Connect(CreateInterfaceFn factory)
 {
-    g_pFileSystem = (IFileSystem*)factory(FILESYSTEM_INTERFACE_VERSION, NULL);
+	g_pFileSystem = (IFileSystem*)factory(FILESYSTEM_INTERFACE_VERSION, NULL);
 
 	if (!g_pFileSystem)
 	{
@@ -30,9 +30,10 @@ void CScriptSystem::Disconnect()
 {
 }
 
-void* CScriptSystem::QueryInterface(const char* pIntefaceName)
+void* CScriptSystem::QueryInterface(const char* pInterfaceName)
 {
-    return nullptr;
+	CreateInterfaceFn factory = Sys_GetFactoryThis();
+	return factory( pInterfaceName, NULL );
 }
 
 InitReturnVal_t CScriptSystem::Init()
@@ -54,7 +55,7 @@ void CScriptSystem::LoadAssembly(char* assemblyPath)
 
 bool CScriptSystem::PostInit()
 {
-    return false;
+    return true;
 }
 
 void CScriptSystem::LoadMono()
@@ -75,7 +76,7 @@ void CScriptSystem::LoadMono()
 
 	// Open an assembly in the domain
 	MonoAssembly* assembly;
-	char* assemblyPath = "E:/Repositories/Source-Engine-Related/SourceEditor/game/sourceeditor/bin/managed/TestClass.dll";
+	char* assemblyPath = "E:/Repositories/Source-Engine-Related/SourceEditor-sdk/game/sourceeditor/bin/managed/TestClass.dll";
 	assembly = mono_domain_assembly_open(domain, assemblyPath);
 	if (!assembly)
 	{
@@ -116,7 +117,7 @@ void CScriptSystem::LoadMono()
 	}
 
 	// Run the method
-	Msg("Running the static method: %s\n", TypeMethodDescStr);
-	mono_runtime_invoke(method, nullptr, nullptr, nullptr);
+	Msg( "Running the static method: %s\n", TypeMethodDescStr );
+	mono_runtime_invoke( method, nullptr, nullptr, nullptr );
 #pragma endregion
 }

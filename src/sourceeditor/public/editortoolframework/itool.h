@@ -1,10 +1,10 @@
 #ifndef ITOOL_H
+#define ITOOL_H
 #ifdef _WIN32
 #pragma once
 #endif
 
 #include "interface.h"
-
 
 /// <summary>
 /// Purpose: All tools expose this interface which has hooks for them to use.

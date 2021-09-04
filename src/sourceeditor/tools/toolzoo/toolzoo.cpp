@@ -6,6 +6,7 @@
 //======================================================//
 
 #include "editortoolframework/itool.h"
+#include "tier1/interface.h"
 #include "tier1/tier1.h"
 
 class CToolZoo : public ITool
@@ -19,14 +20,14 @@ public:
 
 bool CToolZoo::Init()
 {
-	Msg("ToolZoo: Initalising tool\n");
+	Msg("ToolZoo::Init: Initalising tool\n");
 
 	return true;
 }
 
 void CToolZoo::Shutdown()
 {
-	Msg("ToolZoo: Shutting down tool\n");
+	Msg("ToolZoo::Shutdown: Shutting down tool\n");
 }
 
 void CToolZoo::Think(bool finalTick)

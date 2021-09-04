@@ -13,11 +13,11 @@ bool CToolFramework::Connect(CreateInterfaceFn factory)
 
 	if (!g_pFileSystem)
 	{
-		Msg("Tool Framework: Failed to connect\n");
+		Msg("Tool Framework:Connect: Failed to connect\n");
 		return false;
 	}
 
-	Msg("Tool Framework: Connected successfully\n");
+	Msg("Tool Framework::Connect: Connected successfully\n");
 	return true;
 }
 
@@ -33,6 +33,8 @@ void* CToolFramework::QueryInterface(const char* pIntefaceName)
 InitReturnVal_t CToolFramework::Init()
 {
 	LoadTools();
+
+	LoadTool("../tools/toolzoo/toolzoo");
 
 	return INIT_OK;
 }
@@ -55,7 +57,7 @@ void CToolFramework::Think(bool finalTick)
 
 int CToolFramework::GetToolCount()
 {
-	return 0;
+	return m_Tools.Count();
 }
 
 char const* CToolFramework::GetToolName(int index)
@@ -89,9 +91,9 @@ void CToolFramework::LoadTools()
 						tool != NULL;
 						tool = tool->GetNextKey())
 					{
-						Msg("Tool Framework: %s\n", tool->GetString("m_Name"));
-						Msg("Tool Framework: %s\n", tool->GetString("m_FriendlyName"));
-					}
+						Msg("ToolFramework::LoadTools: %s\n", tool->GetString("m_Name"));
+						Msg("ToolFramework::LoadTools: %s\n", tool->GetString("m_FriendlyName"));
+					}	
 					toolData->deleteThis();
 				}
 
@@ -121,6 +123,22 @@ void CToolFramework::LoadTools()
 
 void CToolFramework::LoadTool(const char* pDllName)
 {
+	CSysModule* module = Sys_LoadModule(pDllName);
+	if (!module)
+	{
+		Warning("ToolFramework::LoadTool: Unable to load '%s'\n", pDllName);
+		return;
+	}
+
+	/*
+	CreateInterfaceFn factory = Sys_GetFactory(module);
+	if (!factory)
+	{
+		Sys_UnloadModule(module);
+		Warning("ToolFramework::LoadTool: Tool '%s' has no factory\n", pDllName);
+		return;
+	}
+	*/
 }
 
 void ToolLoad_F(const CCommand& args)

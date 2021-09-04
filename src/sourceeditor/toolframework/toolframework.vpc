@@ -26,6 +26,7 @@ $Project "Tool Framework"
 {
 	$Folder "Public Header Files"
 	{
+		$File	"..\public\editortoolframework\ieditortooldictionary.h"
 		$File	"..\public\editortoolframework\ieditortoolframework.h"
 		$File	"..\public\editortoolframework\itool.h"
 	}
@@ -41,6 +42,8 @@ $Project "Tool Framework"
 
 		$File	"toolframework.cpp"
 		$File	"toolframework.h"
+		//$File	"tooldictionary.cpp"
+		//$File	"tooldictionary.h"
 	}
 
 	$Folder	"Link Libraries"

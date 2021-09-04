@@ -7,7 +7,7 @@
 #include "scriptsystem/iscriptsystem.h"
 #include "tier1/tier1.h"
 
-class CScriptSystem : public IScriptSystem
+class CScriptSystem : public CBaseAppSystem<IScriptSystem>
 {
 public:
 	// Methods of IAppSystem
@@ -15,7 +15,7 @@ public:
 	virtual void	Disconnect();
 
 	// Returns null if it doesn't implement the requested interface
-	virtual void* QueryInterface(const char* pIntefaceName);
+	virtual void* QueryInterface(const char* pInterfaceName);
 
 	virtual InitReturnVal_t Init();
 	virtual void	Shutdown();
