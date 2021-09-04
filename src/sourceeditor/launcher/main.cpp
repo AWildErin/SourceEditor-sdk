@@ -51,8 +51,8 @@ bool CSourceEditorApp::PreInit()
 {
 	qDebug() << "Running PreInit()";
 
-	CreateInterfaceFn factory = GetFactory();
-	ConnectTier1Libraries(&factory, 1);
+	//CreateInterfaceFn factory = GetFactory();
+	//ConnectTier1Libraries(&factory, 1);
 
 	return true;
 }
@@ -74,7 +74,7 @@ int CSourceEditorApp::Main()
 
 void CSourceEditorApp::PostShutdown()
 {
-	DisconnectTier1Libraries();
+	//DisconnectTier1Libraries();
 }
 
 void CSourceEditorApp::Destroy()
