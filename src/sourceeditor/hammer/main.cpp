@@ -2,10 +2,13 @@
 #include "appframework/AppFramework.h"
 #include "tier0/icommandline.h"
 #include "tier1/tier1.h"
+#include "tier2/tier2.h"
 
 #include "filesystem.h"
 #include "materialsystem/imaterialsystem.h"
 #include "istudiorender.h"
+#include "Datacache/imdlcache.h"
+#include "datacache/idatacache.h"
 
 // Qt includes
 #include <QtGui/qapplication.h>
@@ -25,7 +28,7 @@
 IFileSystem *g_pFileSystem;
 CreateInterfaceFn g_Factory;
 IStudioRender	*g_pStudioRender;
-IMaterialSystem *g_pMaterialSystem;
+//IMaterialSystem *g_pMaterialSystem;
 
 class CHammerApp : public CSteamAppSystemGroup
 {
@@ -76,29 +79,34 @@ int main( int argc, char *argv[] )
 bool CHammerApp::Create()
 {
 	// Load all our dependencies
-	//AppSystemInfo_t appSystems[] = 
-	//{
-	//	{ "materialsystem.dll",		MATERIAL_SYSTEM_INTERFACE_VERSION },
-	//	{ "studiorender.dll",		STUDIO_RENDER_INTERFACE_VERSION },
+	AppSystemInfo_t appSystems[] = 
+	{
+		{ "materialsystem.dll",		MATERIAL_SYSTEM_INTERFACE_VERSION },
+		{ "studiorender.dll",		STUDIO_RENDER_INTERFACE_VERSION },
+		{ "datacache.dll",			DATACACHE_INTERFACE_VERSION },
 
-	//	{ "", "" }	// Required to terminate the list
-	//};
+		{ "", "" }	// Required to terminate the list
+	};
 
-	//if ( !AddSystems( appSystems ) )
-	//{
-	//	Error( "App systems failed to load\n" );
-	//	return false;
-	//}
+	if ( !AddSystems( appSystems ) )
+	{
+		Error( "App systems failed to load\n" );
+		return false;
+	}
 
-	//g_pFileSystem = (IFileSystem *)FindSystem( FILESYSTEM_INTERFACE_VERSION );
-	//g_pMaterialSystem = (IMaterialSystem *)FindSystem( MATERIAL_SYSTEM_INTERFACE_VERSION );
-	//g_pStudioRender = (IStudioRender *)FindSystem( STUDIO_RENDER_INTERFACE_VERSION );
+	g_Factory = GetFactory();
+	ConnectTier1Libraries( &g_Factory, 1 );
+	ConnectTier2Libraries( &g_Factory, 1 );
 
-	//if (!g_pFileSystem || !g_pMaterialSystem || !g_pStudioRender)
-	//{
-	//	Warning( "Failed to load required systems\n" );
-	//	return false;
-	//}
+	g_pFileSystem = (IFileSystem *)FindSystem( FILESYSTEM_INTERFACE_VERSION );
+	g_pMaterialSystem = (IMaterialSystem *)FindSystem( MATERIAL_SYSTEM_INTERFACE_VERSION );
+	g_pStudioRender = (IStudioRender *)FindSystem( STUDIO_RENDER_INTERFACE_VERSION );
+
+	if (!g_pFileSystem || !g_pMaterialSystem || !g_pStudioRender)
+	{
+		Warning( "Failed to load required systems\n" );
+		return false;
+	}
 
 	//const char *pShaderDLL = CommandLine()->ParmValue( "-shaderdll" );
 	//const char *pArg;
@@ -114,16 +122,22 @@ bool CHammerApp::Create()
 
 	//g_pMaterialSystem->SetShaderAPI( pShaderDLL );
 
-	g_Factory = GetFactory();
+	//g_Factory = GetFactory();
+
+	g_pMaterialSystem->SetShaderAPI( "shaderapidx9" );
+	g_pMaterialSystem->Connect( g_Factory );
+
+	// Must be done after material system is connected up!
+	g_pMaterialSystemHardwareConfig = (IMaterialSystemHardwareConfig *)FindSystem( MATERIALSYSTEM_HARDWARECONFIG_INTERFACE_VERSION );
 
 	return true;
 }
 
 bool CHammerApp::PreInit()
 {
-	CreateInterfaceFn factory = GetFactory();
-	ConnectTier1Libraries( &factory, 1 );
-	ConVar_Register( 0 );
+	MathLib_Init();
+
+	g_pMaterialSystem->SetAdapter( 0, 0 );
 
 	return true;
 }
@@ -145,8 +159,10 @@ int CHammerApp::Main()
 
 void CHammerApp::Destroy()
 {
-	g_pFileSystem = NULL;
+	DisconnectTier1Libraries();
+	DisconnectTier2Libraries();
 
-	g_pStudioRender = NULL;
+	g_pFileSystem = NULL;
 	g_pMaterialSystem = NULL;
+	g_pStudioRender = NULL;
 }
