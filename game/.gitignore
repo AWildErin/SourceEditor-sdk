@@ -6,6 +6,7 @@ sourceeditor/resources/
 sourceeditor/sourceeditor.exe
 sourceeditor/sourceeditor.pdb
 sourceeditor/Qt*.dll
+sourceeditor/imageformats/*
 
 sourceeditor/tools/**/*.dll
 sourceeditor/tools/**/*.pdb
