@@ -9,6 +9,7 @@
 
 // Qt includes
 #include <QtGui/qapplication.h>
+#include <Qt/qicon.h>
 #include <Qt/qlabel.h>
 #include <Qt/qfile.h>
 #include <Qt/qdir.h>
@@ -48,6 +49,9 @@ int main( int argc, char *argv[] )
 	QDir::setSearchPaths( "resources", QStringList( "./resources" ) );
 	QDir::setSearchPaths( "toolimages", QStringList( "resources:/images" ) );
 
+	// Set app icon
+	QApplication::setWindowIcon( QIcon( "toolimages:/hammer/appicon.ico" ) );
+
 	// Setup stylesheet
 	QFile file( "resources:/stylesheets/valve.qss" );
 	file.open( QFile::ReadOnly );
@@ -73,11 +77,11 @@ int main( int argc, char *argv[] )
 
 bool CHammerApp::Create()
 {
-	//// Load all our dependencies
+	// Load all our dependencies
 	//AppSystemInfo_t appSystems[] = 
 	//{
 	//	{ "materialsystem.dll",		MATERIAL_SYSTEM_INTERFACE_VERSION },
-	//	{ "studiorender.dll",			STUDIO_RENDER_INTERFACE_VERSION },
+	//	{ "studiorender.dll",		STUDIO_RENDER_INTERFACE_VERSION },
 
 	//	{ "", "" }	// Required to terminate the list
 	//};
