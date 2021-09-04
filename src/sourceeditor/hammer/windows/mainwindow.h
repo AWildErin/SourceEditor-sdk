@@ -17,7 +17,7 @@ public:
 	~MainWindow();
 
 private slots:
-	void on_actionnew_triggered();
+	void on_AboutQt_triggered();
 
 private:
 	Ui::MainWindow *ui;
