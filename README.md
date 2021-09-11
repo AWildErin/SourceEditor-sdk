@@ -14,3 +14,14 @@ I am in no way a professional programmer and my code is probably terrible, but i
 SourceEditor is licensed under the MIT license, you can find it's license [here](license_sourceeditor.md). As we are including Source SDK here, it is not licensed under MIT it is instead under it's own license, which you can find [here](license_sourceengine.md).
 
 You can check out our trello [here](https://trello.com/b/jBHyA5mG/sourceeditor) this shows our current roadmap and things we plan to do.
+
+## Building
+This isn't a tutorial on how to build you, you will need some basic idea on how you work with the Source SDK to build this project.
+
+You'll need:
+* Visual Studio 2013
+* Qt 4.8.7 (This may be updated at some point)
+* Mono (If you want the script system to work)
+* Swig (To generated bindings for the script system)
+
+Make sure Qt is inside the `src/thirdparty/qt` directory then run `create_sourceeditor.bat` and rebuild the entire solution. If you didn't add mono, then that project will fail to build but the editor should work fine without it due to the way the editor is coded.
