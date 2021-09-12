@@ -16,7 +16,7 @@ SourceEditor is licensed under the MIT license, you can find it's license [here]
 You can check out our trello [here](https://trello.com/b/jBHyA5mG/sourceeditor) this shows our current roadmap and things we plan to do.
 
 ## Building
-This isn't a tutorial on how to build you, you will need some basic idea on how you work with the Source SDK to build this project.
+This isn't really a tutorial on how to build the editor, you will need some basic idea on how to work with the Source SDK to build this project.
 
 You'll need:
 * Visual Studio 2013
